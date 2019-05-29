@@ -1,7 +1,7 @@
 import React, {MouseEventHandler, useEffect, useReducer} from "react";
-import {CategoriesActions, getInitialState, ItemPayload, rootReducer} from "../../state";
+import {CategoriesActions, getInitialState, ItemPayload, rootReducer} from "../state";
 import uuid from "uuid";
-import {copyToClipboard} from "../../utils";
+import {copyToClipboard} from "../utils";
 
 export const App = () => {
   const initialState = getInitialState();
