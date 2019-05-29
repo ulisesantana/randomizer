@@ -8,9 +8,7 @@ export interface RawCategory extends Item {
 }
 
 export interface Category extends Item {
-  items: {[key: string]: Item}
+  items: Record<string, Item>
 }
 
-export interface Categories {
-  [p: string]: Category
-}
+export type Categories = Record<string, Category>
