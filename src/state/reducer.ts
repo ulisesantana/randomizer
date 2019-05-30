@@ -1,6 +1,6 @@
-import {Categories, Category, Item} from "../types";
+import {Categories, Category} from "../types";
 import {CategoryAction, CategoriesActions, ItemPayload} from "./actions";
-import {mapToID, removeById} from "../utils";
+import {mapToID, filterById, apply, sortByLabel} from "../utils";
 import {StoreService} from "../services";
 import {NAMESPACE} from "../constants";
 import {categories} from "./data";
@@ -8,7 +8,7 @@ import {categories} from "./data";
 function reducer(state: Categories, {type, payload}: CategoryAction): Categories {
   switch (type) {
     case CategoriesActions.CREATE_CATEGORY:
-    case CategoriesActions.UPDATE_CATEGORY:{
+    case CategoriesActions.UPDATE_CATEGORY: {
       const {id, label, items} = payload as Category;
       return {
         ...state,
@@ -20,10 +20,8 @@ function reducer(state: Categories, {type, payload}: CategoryAction): Categories
       };
     }
     case CategoriesActions.DELETE_CATEGORY: {
-      const {id} = payload as {id: string};
-      return {
-        ...mapToID<Category>(Object.values(state).filter(removeById(id)))
-        }
+      const {id} = payload as { id: string };
+      return apply(state, Object.values, filterById(id), mapToID)
     }
     case CategoriesActions.CREATE_ITEM:
     case CategoriesActions.UPDATE_ITEM: {
@@ -45,7 +43,7 @@ function reducer(state: Categories, {type, payload}: CategoryAction): Categories
         ...state,
         [categoryId]: {
           ...state[categoryId],
-          items: mapToID<Item>(Object.values(state[categoryId].items).filter(removeById(id)))
+          items: apply(state[categoryId].items, Object.values, filterById(id), sortByLabel, mapToID)
         }
       };
     }
@@ -69,8 +67,8 @@ function reducer(state: Categories, {type, payload}: CategoryAction): Categories
   }
 }
 
-export function rootReducer(state: Categories, action: CategoryAction): Categories{
-  const newState = reducer(state, action);
+export function rootReducer(state: Categories, action: CategoryAction): Categories {
+  const newState = apply(reducer(state, action), Object.values, sortByLabel, mapToID);
   StoreService.set(NAMESPACE, newState);
   return newState;
 }

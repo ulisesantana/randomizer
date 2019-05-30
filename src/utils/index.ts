@@ -1,12 +1,7 @@
+export * from './dataHelper';
+export * from './sectionHandler';
+
 export const isMobile = () => window.innerWidth < 768;
-
-export function mapToID<T extends {id: string}>(x: T[]) {
-  return x.reduce((acc, y) => ({...acc, [y.id]: y}), {})
-}
-
-export function removeById(id: string){
-  return <T extends {id: string}>(x: T) => x.id !== id
-}
 
 export const copyToClipboard = (str: string) => {
   const el = document.createElement('textarea');
@@ -27,3 +22,7 @@ export const copyToClipboard = (str: string) => {
     document.getSelection()!.addRange(selected);
   }
 };
+
+export function apply(initialData: any, ...rest: Function[]){
+  return rest.reduce((acc, fn) => fn(acc), initialData)
+}
