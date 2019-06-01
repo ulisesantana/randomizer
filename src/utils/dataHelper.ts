@@ -1,6 +1,6 @@
 import {Item} from "../types";
 
-export function mapToID<T extends {id: string}>(x: T[]) {
+export function mapToID<T extends {id: string}>(x: T[]): Record<string, T> {
   return Object.fromEntries(x.map(y => [y.id, y]));
 }
 

@@ -4,6 +4,7 @@ import uuid from "uuid";
 import {Section, useSectionManager} from "../utils";
 import {AppStyled} from "./App.styled";
 import {List, Randomizer, Settings} from "../views";
+import {Edit} from "../views/Edit";
 
 export const App = () => {
   const initialState = getInitialState();
@@ -13,7 +14,8 @@ export const App = () => {
   // This is just a demo. Delete after start using dispatch
   useEffect(() => {
     dispatch({
-      type: CategoriesActions.CREATE_ITEM, payload: {
+      type: CategoriesActions.CREATE_ITEM,
+      payload: {
         categoryId: "5ceed757fc13ae323d000018",
         id: uuid(),
         label: 'El rey'
@@ -40,8 +42,9 @@ export const App = () => {
         />
       }
       {section === Section.Edit &&
-        <Randomizer
+        <Edit
           category={state["5ceed757fc13ae323d000018"]}
+          dispatch={dispatch}
           sectionHandlers={handlers}
         />
       }

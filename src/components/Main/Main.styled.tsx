@@ -12,4 +12,12 @@ export const MainStyled = styled.main`
   padding: 8px;
   top: 0;
   width: ${window.innerWidth - 16}px;
+  
+  ul {
+    display: block;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    width: auto;
+  }
 `;

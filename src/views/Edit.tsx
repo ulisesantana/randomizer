@@ -1,14 +1,23 @@
-import React, {FC} from "react";
-import {Nav, Main} from "../components";
+import React, {ChangeEvent, FC} from "react";
+import {Nav, Main, QuantumInput} from "../components";
 import {Category, Item} from "../types";
 import {SectionHandlers} from "../utils";
+import {CategoriesActions} from "../state";
 
-interface RandomizerProps {
+interface EditProps {
   category: Category,
+  dispatch: Function,
   sectionHandlers: SectionHandlers
 }
 
-export const Randomizer: FC<RandomizerProps> = ({category, sectionHandlers}) => {
+export const Edit: FC<EditProps> = ({category, dispatch, sectionHandlers}) => {
+  const onChangeHandler = (categoryId: string, id: string) =>
+    ({target: {value}}: ChangeEvent<HTMLInputElement>) => {
+      dispatch({
+        type: CategoriesActions.UPDATE_ITEM,
+        payload: {categoryId, id, label: value}
+      })
+    };
 
   return (
     <>
@@ -16,8 +25,11 @@ export const Randomizer: FC<RandomizerProps> = ({category, sectionHandlers}) => 
         <h1>{category.label}</h1>
         <ul>
           {!!Object.keys(category.items).length && Object.values(category.items).map(({id, label}: Item) => (
-            <li id={id} key={id}>
-              {label}
+            <li id={id} key={id + category.id}>
+              <QuantumInput
+                value={label}
+                onChange={onChangeHandler(category.id, id)}
+              />
             </li>
           ))}
         </ul>
