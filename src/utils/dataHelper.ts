@@ -1,7 +1,7 @@
 import {Item} from "../types";
 
 export function mapToID<T extends {id: string}>(x: T[]) {
-  return x.reduce((acc, y) => ({...acc, [y.id]: y}), {})
+  return Object.fromEntries(x.map(y => [y.id, y]));
 }
 
 export function sortByLabel(x: Item[]) {

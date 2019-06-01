@@ -43,7 +43,13 @@ function reducer(state: Categories, {type, payload}: CategoryAction): Categories
         ...state,
         [categoryId]: {
           ...state[categoryId],
-          items: apply(state[categoryId].items, Object.values, filterById(id), sortByLabel, mapToID)
+          items: apply(
+            state[categoryId].items,
+            Object.values,
+            filterById(id),
+            sortByLabel,
+            mapToID
+          )
         }
       };
     }
@@ -68,7 +74,12 @@ function reducer(state: Categories, {type, payload}: CategoryAction): Categories
 }
 
 export function rootReducer(state: Categories, action: CategoryAction): Categories {
-  const newState = apply(reducer(state, action), Object.values, sortByLabel, mapToID);
+  const newState = apply(
+    reducer(state, action),
+    Object.values,
+    sortByLabel,
+    mapToID
+  );
   StoreService.set(NAMESPACE, newState);
   return newState;
 }

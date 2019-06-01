@@ -3,19 +3,18 @@ import {Nav, Main} from "../components";
 import {Category, Item} from "../types";
 import {SectionHandlers} from "../utils";
 
-interface RandomizerProps {
-  category: Category,
+interface ListProps {
+  categories: Category[],
   sectionHandlers: SectionHandlers
 }
 
-export const Randomizer: FC<RandomizerProps> = ({category, sectionHandlers}) => {
+export const List: FC<ListProps> = ({categories, sectionHandlers}) => {
 
   return (
     <>
       <Main>
-        <h1>{category.label}</h1>
         <ul>
-          {!!Object.keys(category.items).length && Object.values(category.items).map(({id, label}: Item) => (
+          {!!categories.length && categories.map(({id, label}: Item) => (
             <li id={id} key={id}>
               {label}
             </li>

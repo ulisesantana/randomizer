@@ -14,7 +14,6 @@
     "react-touch": "^0.4.4",
     "styled-components": "^4.2.0",
     "styled-icons": "^7.11.0",
-    "typescript": "3.4.5",
     "uuid": "^3.3.2"
   },
   "scripts": {
@@ -43,7 +42,8 @@
   "devDependencies": {
     "@types/react-touch": "^1.8.3",
     "@types/styled-components": "^4.1.14",
-    "@types/uuid": "^3.4.4"
+    "@types/uuid": "^3.4.4",
+    "typescript": "^3.5.1"
   },
   "homepage": "https://ulisesantnaa.dev/randomizer",
   "contributors": [

@@ -3,7 +3,7 @@ import {CategoriesActions, getInitialState, ItemPayload, rootReducer} from "../s
 import uuid from "uuid";
 import {Section, useSectionManager} from "../utils";
 import {AppStyled} from "./App.styled";
-import {Randomizer} from "../views";
+import {List, Randomizer, Settings} from "../views";
 
 export const App = () => {
   const initialState = getInitialState();
@@ -34,8 +34,8 @@ export const App = () => {
         />
       }
       {section === Section.List &&
-        <Randomizer
-          category={state["5ceed757fc13ae323d000018"]}
+        <List
+          categories={Object.values(state)}
           sectionHandlers={handlers}
         />
       }
@@ -46,8 +46,8 @@ export const App = () => {
         />
       }
       {section === Section.Settings &&
-        <Randomizer
-          category={state["5ceed757fc13ae323d000018"]}
+        <Settings
+          section={section}
           sectionHandlers={handlers}
         />
       }

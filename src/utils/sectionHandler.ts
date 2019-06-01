@@ -25,7 +25,7 @@ export function useSectionManager(initialSection = Section.Randomize): [Section,
   return [
     section,
     {
-      goToRandomize: () => goToGenerator(Section.Randomize, setSection),
+      goToRandomize: goToGenerator(Section.Randomize, setSection),
       goToEdit: goToGenerator(Section.Edit, setSection),
       goToList: goToGenerator(Section.List, setSection),
       goToSettings: goToGenerator(Section.Settings, setSection)

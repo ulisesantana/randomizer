@@ -22,7 +22,6 @@ export const Randomizer: FC<RandomizerProps> = ({category, sectionHandlers}) => 
           ))}
         </ul>
         <button onClick={() => sectionHandlers.goToSettings()}>GO TO SETTINGS</button>
-        <button onClick={() => sectionHandlers.goToRandomize()}>GO TO RANDOM</button>
       </Main>
       <Nav/>
     </>

@@ -1,4 +1,4 @@
 export * from './Randomizer';
-// export * from './List';
+export * from './List';
 // export * from './Edit';
-// export * from './Settings';
+export * from './Settings';
