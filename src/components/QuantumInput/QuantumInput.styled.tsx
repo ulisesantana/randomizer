@@ -8,5 +8,7 @@ export const QuantumInputStyled = styled.input`
   &:read-only {
     background-color: transparent;
     border: none;
+    color: white;
+    font-size: 1rem;
   }
 `;
