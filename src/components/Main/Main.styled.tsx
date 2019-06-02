@@ -13,6 +13,11 @@ export const MainStyled = styled.main`
   top: 0;
   width: ${window.innerWidth - 16}px;
   
+  h1 input {
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+  
   ul {
     display: block;
     list-style: none;

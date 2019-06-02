@@ -1,8 +1,8 @@
 import React, {ChangeEvent, FC} from "react";
-import {Nav, Main, QuantumInput} from "../components";
+import {Main, Nav, QuantumInput} from "../components";
 import {Category, Item} from "../types";
 import {SectionHandlers} from "../utils";
-import {CategoriesActions} from "../state";
+import {CategoriesActions, CategoriesPayload} from "../state";
 
 interface EditProps {
   category: Category,
@@ -10,25 +10,32 @@ interface EditProps {
   sectionHandlers: SectionHandlers
 }
 
-export const Edit: FC<EditProps> = ({category, dispatch, sectionHandlers}) => {
-  const onChangeHandler = (categoryId: string, id: string) =>
+const handlerCreator = (action: CategoriesActions, dispatch: Function) =>
+  (payload: CategoriesPayload) =>
     ({target: {value}}: ChangeEvent<HTMLInputElement>) => {
       dispatch({
-        type: CategoriesActions.UPDATE_ITEM,
-        payload: {categoryId, id, label: value}
+        type: action,
+        payload: {...payload, label: value}
       })
     };
+
+export const Edit: FC<EditProps> = ({category, dispatch, sectionHandlers}) => {
+  const categoryHandler = handlerCreator(CategoriesActions.UPDATE_CATEGORY, dispatch)(category);
+  const itemHandler = handlerCreator(CategoriesActions.UPDATE_ITEM, dispatch);
 
   return (
     <>
       <Main>
-        <h1>{category.label}</h1>
+        <h1>
+          <QuantumInput value={category.label} onChange={categoryHandler}/>
+        </h1>
         <ul>
-          {!!Object.keys(category.items).length && Object.values(category.items).map(({id, label}: Item) => (
+          {!!Object.keys(category.items).length &&
+            Object.values(category.items).map(({id, label}: Item) => (
             <li id={id} key={id + category.id}>
               <QuantumInput
                 value={label}
-                onChange={onChangeHandler(category.id, id)}
+                onChange={itemHandler({categoryId: category.id, id})}
               />
             </li>
           ))}

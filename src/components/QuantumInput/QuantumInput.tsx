@@ -8,8 +8,8 @@ interface QuantumInputProps {
 
 export const QuantumInput: FC<QuantumInputProps> = ({value, onChange}) => {
   const [editable, setEditable] = useState(false);
-  const editableHandler = (x: boolean) => () => {
-    setEditable(x);
+  const editableHandler = (isEditable: boolean) => () => {
+    setEditable(isEditable);
   };
 
   const onFocus = editableHandler(true);
