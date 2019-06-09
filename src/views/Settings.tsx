@@ -17,7 +17,11 @@ export const Settings: FC<SettingsProps> = ({section, sectionHandlers}) => {
         <button onClick={() => sectionHandlers.goToList()}>GO TO LIST</button>
         <button onClick={() => sectionHandlers.goToRandomize()}>GO TO RANDOM</button>
       </Main>
-      <Nav/>
+      <Nav
+        leftButton={<button onClick={() => sectionHandlers.goToList()}>GO TO LIST</button>}
+        cta={<span>EXPORT</span>}
+        rightButton={<span>IMPORT</span>}
+      />
     </>
   );
 };

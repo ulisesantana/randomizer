@@ -1,15 +1,22 @@
-import React from "react";
+import React, {FC} from "react";
 import {NavStyled} from "./Nav.styled";
 
+export interface NavProps {
+  leftButton: JSX.Element,
+  cta: JSX.Element,
+  rightButton: JSX.Element
+}
 
-export const Nav = () => (
+export const Nav: FC<NavProps> = ({leftButton, cta, rightButton}) => (
   <NavStyled>
     <div>
-
+      {leftButton}
     </div>
-    <div className="cta"/>
+    <button className="cta">
+      {cta}
+    </button>
     <div>
-
+      {rightButton}
     </div>
   </NavStyled>
 );

@@ -21,11 +21,12 @@ export const Randomizer: FC<RandomizerProps> = ({category, sectionHandlers}) => 
             </li>
           ))}
         </ul>
-        <button onClick={() => sectionHandlers.goToList()}>GO TO LIST</button>
-        <button onClick={() => sectionHandlers.goToEdit()}>GO TO EDIT</button>
-        <button onClick={() => sectionHandlers.goToSettings()}>GO TO SETTINGS</button>
       </Main>
-      <Nav/>
+      <Nav
+        leftButton={<button onClick={() => sectionHandlers.goToEdit()}>GO TO EDIT</button>}
+        cta={<span>RANDOM</span>}
+        rightButton={<button onClick={() => sectionHandlers.goToList()}>GO TO LIST</button>}
+      />
     </>
   );
 };

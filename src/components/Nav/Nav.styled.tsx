@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import {theme} from '../../jss.config';
-
+const ctaSize = '96px';
 export const NavStyled = styled.nav`
   align-items: center;
   background-color: ${theme.primaryColor};
@@ -8,18 +8,23 @@ export const NavStyled = styled.nav`
   bottom: 0;
   display: flex;
   height: 100px;
-  justify-content: space-between;
-  left: 0;
-  position: absolute;
-  width: 100%;
 
   .cta {
     background-color: ${theme.secondaryColor};
     border-radius: 100%;
-    content: "";
-    display: block;
-    height: 100px;
-    width: 100px
+    border: solid 4px white;
+    cursor: pointer;
+    height: ${ctaSize};
+    outline: none;
+    width: ${ctaSize};
+  }
+  
+  & > div {
+    align-items: center;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    width: ${window.innerWidth/3}px;
   }
 
 

@@ -1,5 +1,5 @@
 export const theme = {
-  primaryColor: 'green',
-  secondaryColor: 'red',
+  primaryColor: '#2a842a',
+  secondaryColor: '#ff6600',
   textColor: 'white'
 };

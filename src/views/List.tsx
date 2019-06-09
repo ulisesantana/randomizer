@@ -23,7 +23,11 @@ export const List: FC<ListProps> = ({categories, sectionHandlers}) => {
         <button onClick={() => sectionHandlers.goToSettings()}>GO TO SETTINGS</button>
         <button onClick={() => sectionHandlers.goToRandomize()}>GO TO RANDOM</button>
       </Main>
-      <Nav/>
+      <Nav
+        leftButton={<button onClick={() => sectionHandlers.goToRandomize()}>GO TO RANDOM</button>}
+        cta={<span>RANDOM CATEGORY</span>}
+        rightButton={<button onClick={() => sectionHandlers.goToSettings()}>GO TO SETTINGS</button>}
+      />
     </>
   );
 };

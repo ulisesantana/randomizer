@@ -43,7 +43,11 @@ export const Edit: FC<EditProps> = ({category, dispatch, sectionHandlers}) => {
         <button onClick={() => sectionHandlers.goToSettings()}>GO TO SETTINGS</button>
         <button onClick={() => sectionHandlers.goToRandomize()}>GO TO RANDOM</button>
       </Main>
-      <Nav/>
+      <Nav
+        leftButton={<button onClick={() => sectionHandlers.goToRandomize()}>GO TO RANDOM</button>}
+        cta={<span>ADD</span>}
+        rightButton={<button onClick={() => sectionHandlers.goToSettings()}>GO TO SETTINGS</button>}
+      />
     </>
   );
 };
