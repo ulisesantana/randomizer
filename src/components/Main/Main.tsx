@@ -2,8 +2,10 @@ import React from "react";
 import {MainStyled} from "./Main.styled";
 
 
-export const Main = ({children}: {children: JSX.Element[]}) => (
+export const Main = ({children}: {children: JSX.Element | JSX.Element[]}) => (
   <MainStyled>
-    {children}
+    <div className="content">
+      {children}
+    </div>
   </MainStyled>
 );

@@ -20,7 +20,7 @@ export interface SectionHandlers {
   goToSettings: () => void
 }
 
-export function useSectionManager(initialSection = Section.Edit): [Section, SectionHandlers]{
+export function useSectionManager(initialSection = Section.Randomize): [Section, SectionHandlers]{
   const [section, setSection] = useState(initialSection);
   return [
     section,

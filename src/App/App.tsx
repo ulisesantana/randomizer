@@ -1,6 +1,5 @@
-import React, {useEffect, useReducer} from "react";
-import {CategoriesActions, getInitialState, ItemPayload, rootReducer} from "../state";
-import uuid from "uuid";
+import React, {useReducer, useState} from "react";
+import {getInitialState, rootReducer} from "../state";
 import {Section, useSectionManager} from "../utils";
 import {AppStyled} from "./App.styled";
 import {List, Randomizer, Settings} from "../views";
@@ -10,46 +9,38 @@ export const App = () => {
   const initialState = getInitialState();
   const [state, dispatch] = useReducer(rootReducer, initialState);
   const [section, handlers] = useSectionManager();
-
-  // This is just a demo. Delete after start using dispatch
-  useEffect(() => {
-    dispatch({
-      type: CategoriesActions.CREATE_ITEM,
-      payload: {
-        categoryId: "5ceed757fc13ae323d000018",
-        id: uuid(),
-        label: 'El rey'
-      } as ItemPayload
-    })
-  }, []);
-  //
-  // const stateExportHandler: MouseEventHandler = () => {
-  //   copyToClipboard(JSON.stringify(state, null, 2))
-  // };
+  const [currentCategory, setCurrentCategory] = useState(Object.keys(state)[0]);
+  const nextCategory = Object.keys(state).find(id => id !== currentCategory);
 
   return (
     <AppStyled>
       {section === Section.Randomize &&
         <Randomizer
-          category={state["5ceed757fc13ae323d000018"]}
+          category={state[currentCategory]}
           sectionHandlers={handlers}
         />
       }
       {section === Section.List &&
         <List
-          categories={Object.values(state)}
+          state={state}
+          dispatch={dispatch}
           sectionHandlers={handlers}
+          categoryHandler={setCurrentCategory}
         />
       }
       {section === Section.Edit &&
         <Edit
-          category={state["5ceed757fc13ae323d000018"]}
+          nextCategory={nextCategory}
+          category={state[currentCategory]}
           dispatch={dispatch}
           sectionHandlers={handlers}
+          categoryHandler={setCurrentCategory}
         />
       }
       {section === Section.Settings &&
         <Settings
+          state={state}
+          dispatch={dispatch}
           section={section}
           sectionHandlers={handlers}
         />

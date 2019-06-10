@@ -89,6 +89,30 @@ export const categories: Categories = [
       {
         "id": "5ceed757fc13ae323d00001b",
         "label": "Motivos"
+      },
+      {
+        "id": "34",
+        "label": "Si nos dejan"
+      },
+      {
+        "id": "78",
+        "label": "La media vuelta"
+      },
+      {
+        "id": "12",
+        "label": "Motivos"
+      },
+      {
+        "id": "789",
+        "label": "Si nos dejan"
+      },
+      {
+        "id": "5yh5rg3",
+        "label": "La media vuelta"
+      },
+      {
+        "id": "13rtgf13",
+        "label": "Motivos"
       }
     ]
   }

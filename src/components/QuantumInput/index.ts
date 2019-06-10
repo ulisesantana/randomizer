@@ -1,1 +1,1 @@
-export * from './QuantumInput';
+export * from './Input';

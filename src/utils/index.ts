@@ -1,8 +1,6 @@
 export * from './dataHelper';
 export * from './sectionHandler';
 
-export const isMobile = () => window.innerWidth < 768;
-
 export const copyToClipboard = (str: string) => {
   const el = document.createElement('textarea');
   el.value = str;
@@ -23,6 +21,12 @@ export const copyToClipboard = (str: string) => {
   }
 };
 
-export function apply(initialData: any, ...rest: Function[]){
+export function apply(initialData: any, ...rest: Function[]) {
   return rest.reduce((acc, fn) => fn(acc), initialData)
+}
+
+export function shuffle<T>(arr: T[]): T {
+  return arr[
+    Math.round(Math.random() * (arr.length - 1))
+    ];
 }

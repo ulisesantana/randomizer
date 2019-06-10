@@ -13,7 +13,7 @@
     "react-scripts": "3.0.0",
     "react-touch": "^0.4.4",
     "styled-components": "^4.2.0",
-    "styled-icons": "^7.11.0",
+    "styled-icons": "^7.15.1",
     "uuid": "^3.3.2"
   },
   "scripts": {

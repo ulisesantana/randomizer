@@ -1,13 +1,32 @@
 import styled from 'styled-components';
 
-export const QuantumInputStyled = styled.input`
-  font-size: 1rem;
-  outline-color: transparent;
+export const QuantumInputStyled = styled.div`
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  width: 100%;
   
-  &:read-only {
-    align-self: center;
+  textarea {
+    align-content: center;
     background-color: transparent;
     border: none;
-    color: white;
+    color: inherit;
+    font: inherit;
+    resize: none;
+    width: inherit;
   }
+  
+  button {
+    align-items: center;
+    background-color: #ff2200;
+    border: none;
+    border-radius: 100%;
+    color: white;
+    display: flex;
+    justify-content: center;
+    height: 36px;
+    width: 36px;
+  }
+  
+  
 `;
