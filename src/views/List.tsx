@@ -49,7 +49,7 @@ export const List: FC<ListProps> = ({state, sectionHandlers, dispatch, categoryH
           ))}
         </ul>
         <AddModalForm
-          title={`Add an item:`}
+          title={`Add a category:`}
           open={isModalOpen}
           onSubmit={onSubmitHandler}
           onCancel={() => {setModal(false)}}
